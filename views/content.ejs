@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>content is here</p>
+    <p>Welcome <%=user.name%> post below</p>
+    <%if(locals.user){%>
+        <a href="/users/log-out">Log Out</a>
+    <%}%>
+    <% if(locals.user){%>
+        <form action="/posts/create-post" id="new-post-form" method="post">
+            <textarea name="content" id="" cols="30" rows="3" placeholder="Type here"></textarea>
+            <input type="submit" value="Post">
+        </form>
+    <%}%>
+    <%for(let post of posts){%>
+        <p><%= post.content%></p>
+    <%}%>
+</body>
+</html>

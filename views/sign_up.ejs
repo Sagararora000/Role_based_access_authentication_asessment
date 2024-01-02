@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/sign_up.css">
+</head>
+<body>
+    
+<div class="signUpPage">
+    <h1 style="color: black;">Sign Up</h1>
+
+    <form class="signUpForm" action="/users/create" method="POST">
+        <div class="fill">
+            <input  type="text" name="name" placeholder="Your Name" required>
+            <input  type="email" name="email" placeholder="Your Email" required>
+            <input  type="password" name="password" placeholder="Password" required>
+            <input  type="password" name="confirm_password" placeholder="Confirm Password" required>
+        </div>
+        <input type="submit" value="Sign Up">
+
+    </form>
+</div>
+
+
+</body>
+</html>

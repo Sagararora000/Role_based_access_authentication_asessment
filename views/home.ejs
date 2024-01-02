@@ -4,8 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/login.css">
 </head>
 <body>
+    <h1>hello hi</h1>
     
+
+<div class="signInPage">
+    <h1 style="color: black;">Sign In</h1>
+
+    <form class="signInForm" action="/users/create-session" method="POST">
+        <div class="fill">
+            <input type="email" name="email" placeholder="Email"  required>
+            <input type="password" name="password" placeholder="Password"  required>
+            <select name="" id="">
+                <option value="">Guest</option>
+                <option value="">Admin</option>
+                <option value="">Employee</option>
+
+            </select>
+        </div>
+        <input type="submit" value="Sign In">
+        
+    
+    </form>
+    <p id="signUpLink">Create account: <a href="/users/signup">sign up</a></p>
+</div>
+
+
 </body>
 </html>
