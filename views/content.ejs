@@ -7,7 +7,8 @@
 </head>
 <body>
     <p>content is here</p>
-    <p>Welcome <%=user.name%> post below</p>
+    <p>Welcome <%=user.name%> post below
+    <%=console.log(locals.user)%></p>
     <%if(locals.user){%>
         <a href="/users/log-out">Log Out</a>
     <%}%>
@@ -18,7 +19,18 @@
         </form>
     <%}%>
     <%for(let post of posts){%>
-        <p><%= post.content%></p>
+        
+        
+        <p>
+            <span><%= post.content%></span> 
+            <%if(locals.user && locals.user.id == post.user.id){%>
+            <span><a href="/posts/destroy/<%= post.id %>">delete</a></span><br>
+            <%}%>
+            <small><%=post.user.name%></small>
+        </p>
+
+        
+        <br>
     <%}%>
 </body>
 </html>

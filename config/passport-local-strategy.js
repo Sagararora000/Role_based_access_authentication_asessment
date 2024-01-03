@@ -9,10 +9,15 @@ passport.use(new LocalStrategy({
     usernameField: "email",
 },function(email,password,done){
     User.findOne({email:email}).then((user)=>{
-        if(!user || user.password != password){
+        
+        if(!user || user.password != password ){
             console.log('Invalid Username/Password');
             return done(null,false);
         }
+        // if(user.role != role){
+        //     console.log("invalid credentials");
+        //     return done(null,false);
+        // }
         return done(null,user);
     }).catch((err)=>{
         console.log("Error in finding user courtesy to passport");

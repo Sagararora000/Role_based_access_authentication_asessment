@@ -10,7 +10,9 @@ const passportLocal = require('./config/passport-local-strategy');
 
 //prevents logging in again and again after server is down
 const MongoStore = require('connect-mongo');
-app.use(express.urlencoded());
+const bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(express.urlencoded());
 
 //setting up view engine
 app.set('view engine','ejs');
