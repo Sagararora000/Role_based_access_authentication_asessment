@@ -7,22 +7,26 @@ const User = require("../models/user");
 
 passport.use(new LocalStrategy({
     usernameField: "email",
-},function(email,password,done){
-    User.findOne({email:email}).then((user)=>{
-        
-        if(!user || user.password != password ){
+    passwordField: "password"
+},async (email,password,done)=>{
+    try{
+        const user = await User.findOne({email: email});
+        if(!user){
             console.log('Invalid Username/Password');
             return done(null,false);
         }
-        // if(user.role != role){
-        //     console.log("invalid credentials");
-        //     return done(null,false);
-        // }
+        const isMatch = await user.matchPassword(password);
+        if(!isMatch){
+            return done(null,false);
+        }
         return done(null,user);
-    }).catch((err)=>{
-        console.log("Error in finding user courtesy to passport");
-        return done(err);
-    })
+    }catch(err){
+        console.log(err);
+        return done(err, false);
+    }
+    
+    
+    
 }));
 
 //serializing the user to decide whcih key is to be kept in the cookies

@@ -1,62 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <p>content is here</p>
     <p>Welcome <%=user.name%> post below
-    <%=console.log(locals.user)%></p>
+            
+    </p>
     <%if(locals.user){%>
         <a href="/users/log-out">Log Out</a>
-    <%}%>
-    <% if(locals.user && locals.user.role != "guest"){%>
-        <form action="/posts/create-post" id="new-post-form" method="post">
-            <textarea name="content" id="" cols="30" rows="3" placeholder="Type here"></textarea>
-            <input type="submit" value="Post">
-        </form>
-    <%}%>
-    <%if(locals.user.role == "employee"){%>
-        <%for(let post of posts){%>
-            
-            <p>
-                <span><%= post.content%></span> 
-                <%if(locals.user && locals.user.id == post.user.id){%>
-                <span><a href="/posts/destroy/<%= post.id %>">delete</a></span><br>
+        <%}%>
+            <% if(locals.user && locals.user.role !="guest" ){%>
+                <form action="/posts/create-post" id="new-post-form" method="post">
+                    <textarea name="content" id="" cols="30" rows="3" placeholder="Type here"></textarea>
+                    <input type="submit" value="Post">
+                </form>
                 <%}%>
-                <small><%=post.user.name%></small>
-            </p>
-            <br>
-        <%}%>
-    <%}%>
-    <%if(locals.user.role == "admin"){%>
-        <%for(let post of posts){%>
-        
-            <p>
-                <span><%= post.content%></span> 
-                <%if(locals.user){%>
-                <span><a href="/posts/destroy/<%= post.id %>">delete</a></span><br>
-                <%}%>
-                <small><%=post.user.name%></small>
-            </p>
-            <br>
-        <%}%>
-    <%}%>
-    <%if(locals.user.role == "guest"){%>
-        
-        <%for(let post of posts){%>
-            <%=console.log(post);%>
-            <p>
-                <span><%= post.content%></span> 
-                
-                <small><%=post.user.name%></small>
-            </p>
-            <br>
-        <%}%>
-    <%}%>
-        
-    
+                    <%if(locals.user.role=="employee" ){%>
+                        <%for(let post of posts){%>
+
+                            <p>
+                                <span>
+                                    <%= post.content%>
+                                </span>
+                                <%if(locals.user && locals.user.id==post.users.id){%>
+                                    <span><a href="/posts/destroy/<%= post.id %>">delete</a></span><br>
+                                    <%}%>
+                                    <small><%=post.user.name%></small>
+                            </p>
+                            <br>
+                            <%}%>
+                                <%}%>
+                                    <%if(locals.user.role=="admin" ){%>
+                                        <%for(let post of posts){%>
+
+                                            <p>
+                                                <span>
+                                                    <%= post.content%>
+                                                </span>
+                                                <%if(locals.user){%>
+                                                    <span><a href="/posts/destroy/<%= post.id %>">delete</a></span><br>
+                                                    <%}%>
+                                                    <small><%=post.user.name%></small>
+                                            </p>
+                                            <br>
+                                            <%}%>
+                                                <%}%>
+                                                    <%if(locals.user.role=="guest" ){%>
+ 
+                                                        <%for(let post of posts){%>
+                                                            
+                                                                <p>
+                                                                    <span>
+                                                                        <%= post.content%>
+                                                                    </span>
+
+                                                                    <small><%=post.user.name%></small>
+                                                                </p>
+                                                                <br>
+                                                                <%}%>
+                                                                    <%}%>
+
+
 </body>
+
 </html>
