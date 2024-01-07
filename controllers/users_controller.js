@@ -73,7 +73,7 @@ module.exports.createSession = async function(req,res){
     try{
         const {email, password, role} = req.body;
         const user = await User.findOne({role: role});
-        console.log(user.email);
+        console.log(user);
         if(!user || user.email != email){
             return res.redirect('/')
         }

@@ -5,66 +5,154 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/content.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <p>content is here</p>
-    <p>Welcome <%=user.name%> post below
-            
-    </p>
-    <%if(locals.user){%>
-        <a href="/users/log-out">Log Out</a>
-        <%}%>
+
+    <nav class="nav-bar">
+        <img src="/images/post-logo.png" alt="" srcset="">
+        <div class="nav-bar-middle">
+            <p class="nav-middle-text">Welcome <span class="welcome-user">
+                    <%=user.name%>
+                </span> post below</p>
+
+            <%if(locals.user){%>
+                <p class="nav-role-left">Role: <span class="nav-role-right">
+                        <%=locals.user.role%>
+                    </span></p>
+                <%}%>
+
+                    </p>
+        </div>
+
+        <span>
+            <%if(locals.user){%>
+                <a href="/users/log-out">Log Out</a>
+                <%}%>
+        </span>
+
+    </nav>
+    <hr>
+    <div class="outer-div">
+
+
+
+        <div class="content-div">
+
             <% if(locals.user && locals.user.role !="guest" ){%>
                 <form action="/posts/create-post" id="new-post-form" method="post">
-                    <textarea name="content" id="" cols="30" rows="3" placeholder="Type here"></textarea>
-                    <input type="submit" value="Post">
+
+                    <div class="form-floating">
+                        <textarea name="content" class="form-control" placeholder="Post here" id="floatingTextarea2"
+                            style="height: 100px" cols="90" rows="10"></textarea>
+                        <label for="floatingTextarea2">Write Posts here</label>
+                    </div>
+                    <input id="post-btn" type="submit" value="Post" class="btn btn-outline-danger">
                 </form>
                 <%}%>
                     <%if(locals.user.role=="employee" ){%>
                         <%for(let post of posts){%>
+                            <div class="post-container">
+                                <p class="typed-post">
+                                    <span class="emp-user">
+                                        <%=post.user.name%>
+                                    </span>
+                                    <br>
+                                    <span>
+                                        <%= post.content%>
+                                    </span>
 
-                            <p>
-                                <span>
-                                    <%= post.content%>
-                                </span>
-                                <%if(locals.user && locals.user.id==post.users.id){%>
-                                    <span><a href="/posts/destroy/<%= post.id %>">delete</a></span><br>
-                                    <%}%>
-                                    <small><%=post.user.name%></small>
-                            </p>
+                                </p>
+                                <p>
+                                    <%if(locals.user && locals.user.id==post.user.id){%>
+                                        <span class="delete-post"><a
+                                                href="/posts/destroy/<%= post.id %>">delete</a></span><br>
+                                        <%}%>
+                                </p>
+                            </div>
+
                             <br>
                             <%}%>
                                 <%}%>
                                     <%if(locals.user.role=="admin" ){%>
+                                        
+                                            <%for(let post of posts){%>
+                                                <div id="admin-pannel">
+                                                    <div class="post-container">
+                                                        <p class="typed-post">
+                                                            <span class="emp-user">
+                                                                <%=post.user.name%>
+                                                            </span>
+                                                            <br>
+                                                            <span>
+                                                                <%= post.content%>
+                                                            </span>
+        
+                                                        </p>
+                                                        <p>
+                                                            <%if(locals.user){%>
+                                                                <span class="delete-post"><a
+                                                                        href="/posts/destroy/<%= post.id %>">delete</a></span><br>
+                                                                <%}%>
+                                                        </p>
+                                                    </div>
+                                                    
+                                                </div>
+                                                
+                                                <br>
+                                            <%}%>
+                                            <div id="registered-users">
+                                                        <h2>Registered-users</h2>
+                                                        <hr>
+                                                        <%for(user of users){%>
+                                                            <p class="registered-info">
+                                                                <span class="emp-user">
+                                                                    <%=user.name%>
+                                                                </span>
+                                                                <br>
+                                                                <span>
+                                                                    <%= user.email%>
+                                                                </span>
+            
+                                                            </p>
+                                                            
+                                                        <%}%>
+                                                        
+                                            </div>
+
+                                            
+                                              
+                                            
+                                        
+                                        
+                                    <%}%>
+                                    <%if(locals.user.role=="guest" ){%>
+
                                         <%for(let post of posts){%>
 
                                             <p>
                                                 <span>
                                                     <%= post.content%>
                                                 </span>
-                                                <%if(locals.user){%>
-                                                    <span><a href="/posts/destroy/<%= post.id %>">delete</a></span><br>
-                                                    <%}%>
-                                                    <small><%=post.user.name%></small>
+
+                                                <small>
+                                                    <%=post.user.name%>
+                                                </small>
                                             </p>
                                             <br>
                                             <%}%>
                                                 <%}%>
-                                                    <%if(locals.user.role=="guest" ){%>
- 
-                                                        <%for(let post of posts){%>
-                                                            
-                                                                <p>
-                                                                    <span>
-                                                                        <%= post.content%>
-                                                                    </span>
+        </div>
+    </div>
 
-                                                                    <small><%=post.user.name%></small>
-                                                                </p>
-                                                                <br>
-                                                                <%}%>
-                                                                    <%}%>
+
+
 
 
 </body>
