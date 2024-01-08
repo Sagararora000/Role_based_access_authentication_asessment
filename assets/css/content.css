@@ -113,7 +113,7 @@ body{
 /* Registered users -->for admin pannel */
 
 #registered-users{
-    position: absolute;
+    position: fixed;
     left: 1100px;
     bottom: 180px;
     height: fit-content;

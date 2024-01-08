@@ -10,7 +10,7 @@ const db = require('./config/mongoose');
 const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
-const passportjwt = require('./config/passport-jwt-strategy');
+
 
 //prevents logging in again and again after server is down
 const MongoStore = require('connect-mongo');

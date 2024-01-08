@@ -1,6 +1,6 @@
 const { Module } = require('module');
 const User = require('../models/user');
-const jwt = require('jsonwebtoken');
+
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
 const { resolve } = require('path');
