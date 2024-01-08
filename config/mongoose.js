@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 // mongoose.connect('mongodb://localhost/multirole_log_in');
-mongoose.connect('mongodb+srv://sagar:mongodbsagar@cluster0.lagmezc.mongodb.net/?retryWrites=true&w=majority');
+mongoose.connect('mongodb+srv://sagar:mongodbsagar@cluster0.lagmezc.mongodb.net/test?retryWrites=true&w=majority');
 
 
 const db = mongoose.connection;

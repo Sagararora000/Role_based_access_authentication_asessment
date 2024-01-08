@@ -1,13 +1,9 @@
 const express = require('express');
-const mongoose = require('mongoose');
-const DB = 'mongodb+srv://sagar:mongodbsagar@cluster0.lagmezc.mongodb.net/?retryWrites=true&w=majority'
-// mongoose.connect(DB).then(()=>{
-//     console.log("connection successful");
-// }).catch((err)=>{
-//     console.log(err);
-// })
-const port = 8010;
+// const cors = require('cors');
+
+const port = 3200;
 const app = express();
+
 
 
 const db = require('./config/mongoose');
@@ -37,7 +33,7 @@ app.use(session({
     cookie:{
         maxAge: (1000 * 60 * 100)
     },
-    store: MongoStore.create({mongoUrl: 'mongodb://localhost/multirole_log_in'})
+    store: MongoStore.create({mongoUrl: 'mongodb+srv://sagar:mongodbsagar@cluster0.lagmezc.mongodb.net/test?retryWrites=true&w=majority'})
     
 }));
 app.use(express.static('./assets'));
