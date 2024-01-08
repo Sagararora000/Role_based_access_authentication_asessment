@@ -25,7 +25,7 @@ https://rolebasedaccessloginassessmentbysagararora-4dylo1nm.b4a.run/users/signup
 
 ***admin*** credentials:-
 
-**username**: __sagar@gmail.com__
+**username**: __shyam@gmail.com__
 
 **password:** __123__
 
