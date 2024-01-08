@@ -8,6 +8,18 @@ Mongoose is used as an ORM for MongoDB for storing Users in Database.
 Passport JS is used for local(email, password) authentication.
 The application is production ready
 
+**In this project admin has access to:**
+1) post
+2) delete all the posts
+3) see all the registered users
+
+**employee has the access to:**
+1) post
+2) delete its own post
+
+**guest has the access to**
+1) only view the post
+
 ## Link for the website ##
 https://rolebasedaccessloginassessmentbysagararora-4dylo1nm.b4a.run/users/signup
 
