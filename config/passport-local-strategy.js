@@ -50,7 +50,7 @@ passport.deserializeUser(function(id,done){
 
 passport.checkAuthentication= function(req,res,next){
 
-    if(req,isAuthenticated()){
+    if(req.isAuthenticated()){
         return next();
     }
     return res.redirect('/');

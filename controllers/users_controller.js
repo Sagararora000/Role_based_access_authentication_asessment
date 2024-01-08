@@ -69,12 +69,14 @@ module.exports.create = function(req,res){
     
 }
 module.exports.createSession = async function(req,res){
-    
+    // console.log(req.body.email);
+    // console.log(req.body.role)
     try{
         const {email, password, role} = req.body;
-        const user = await User.findOne({role: role});
+        
+        const user = await User.findOne({email: email});
         console.log(user);
-        if(!user || user.email != email){
+        if(!user || user.email != email || role != user.role){
             return res.redirect('/')
         }
         const passwordMatch = await bcrypt.compare(password, user.password);
@@ -98,6 +100,7 @@ module.exports.destroySession = function(req,res){
             console.log("Error");
         }
         else{
+            
             res.redirect('/');
         }
     });
