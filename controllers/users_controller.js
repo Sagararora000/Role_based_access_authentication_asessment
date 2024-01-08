@@ -27,7 +27,7 @@ module.exports.create = function(req,res){
             password: hashedPassword,
             role: req.body.role
         }
-        if(req.body.role == "admin"){
+        if(req.body.role == "Admin"){
             User.findOne({role:req.body.role}).then((user)=>{
                 // console.log(user);
                 if(!user){

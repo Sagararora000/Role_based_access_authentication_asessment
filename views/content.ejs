@@ -45,18 +45,18 @@
 
         <div class="content-div">
 
-            <% if(locals.user && locals.user.role !="guest" ){%>
+            <% if(locals.user && locals.user.role !="Guest" ){%>
                 <form action="/posts/create-post" id="new-post-form" method="post">
 
                     <div class="form-floating">
                         <textarea name="content" class="form-control" placeholder="Post here" id="floatingTextarea2"
                             style="height: 100px" cols="90" rows="10"></textarea>
-                        <label for="floatingTextarea2">Write Posts here</label>
+                        <label for="floatingTextarea2">Write Posts Here</label>
                     </div>
                     <input id="post-btn" type="submit" value="Post" class="btn btn-outline-danger">
                 </form>
                 <%}%>
-                    <%if(locals.user.role=="employee" ){%>
+                    <%if(locals.user.role=="Employee" ){%>
                         <%for(let post of posts){%>
                             <div class="post-container">
                                 <p class="typed-post">
@@ -80,7 +80,7 @@
                             <br>
                             <%}%>
                                 <%}%>
-                                    <%if(locals.user.role=="admin" ){%>
+                                    <%if(locals.user.role=="Admin" ){%>
                                         
                                             <%for(let post of posts){%>
                                                 <div id="admin-pannel">
@@ -132,19 +132,22 @@
                                         
                                         
                                     <%}%>
-                                    <%if(locals.user.role=="guest" ){%>
+                                    <%if(locals.user.role=="Guest" ){%>
 
                                         <%for(let post of posts){%>
 
-                                            <p>
-                                                <span>
-                                                    <%= post.content%>
-                                                </span>
-
-                                                <small>
-                                                    <%=post.user.name%>
-                                                </small>
-                                            </p>
+                                            <div class="post-container margin-post">
+                                                <p class="typed-post">
+                                                    <span class="emp-user">
+                                                        <%=post.user.name%>
+                                                    </span>
+                                                    <br>
+                                                    <span>
+                                                        <%= post.content%>
+                                                    </span>
+                
+                                                </p>
+                                            </div>
                                             <br>
                                             <%}%>
                                                 <%}%>
