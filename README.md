@@ -25,9 +25,9 @@ https://rolebasedaccessloginassessmentbysagararora-4dylo1nm.b4a.run/users/signup
 
 ***admin*** credentials:-
 
-**username**: __sag@gmail.com__
+**username**: __shyam@gmail.com__
 
-**password:** __1__
+**password:** __123__
 
 **I have created the admin( You can also create your own but there can be only one admin in this project you can ask me to delete the credentials of admin if you want.)**
 ## To start setting up the project
