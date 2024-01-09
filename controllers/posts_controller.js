@@ -1,7 +1,11 @@
 const Post = require('../models/post');
 module.exports.createPost = function(req,res){
     Post.create({content:req.body.content, user: req.user._id}).then(()=>{
-        return res.redirect('/content');
+            console.log(req.body.content);
+            return res.redirect('/content');
+        
+
+        
     })
 }
 module.exports.destroyPost = function(req,res){
