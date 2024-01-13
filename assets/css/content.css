@@ -117,11 +117,12 @@ body{
     left: 1100px;
     bottom: 180px;
     height: fit-content;
+    max-height: 20vw;
     width: 300px;
     background-color: white;
     margin-left: 20px;
     border-radius: 15px;
-    
+    overflow: scroll;
     text-align : center;
 
 }
