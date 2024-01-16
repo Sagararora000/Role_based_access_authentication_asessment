@@ -1,33 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/css/login.css">
 </head>
-<body>
-   
-<div class="signInPage">
-    <h1 style="color: black;">Sign In</h1>
 
-    <form class="signInForm" action="/users/create-session" method="POST">
-        <div class="fill">
-            <input type="email" name="email" placeholder="Email"  required>
-            <input type="password" name="password" placeholder="Password"  required>
-            <select name="role" id="" >
-                <option value="Guest">Guest</option>
-                <option value="Admin">Admin</option>
-                <option value="Employee">Employee</option>
-            </select>
+<body>
+
+    <div class="signInPage">
+
+        <div class="leftPage" style="color: white; background-color: blue;">
+
+            
         </div>
-        <input type="submit" value="Sign In">
-        
-    
-    </form>
-    <p id="signUpLink">Create account: <a href="/users/signup">sign up</a></p>
-</div>
+
+
+        <div class="rightPage">
+            <h1 style="color: #288eda; font-family: 'rubik';">Login Account</h1>
+            <p style="width: 400px; font-size: 13px; position: relative; bottom: 15px; color: gray;">Lorem, ipsum
+                dolor sit amet consectetur adipisicing elit. Totam beatae voluptatum aperiam odit maxime pariatur
+                maiores labore dolor, excepturi sapiente, fugiat, quae velit. Aperiam in dignissimos iste placeat veniam
+                ad.</p>
+
+            <form class="signInForm " action="/users/create-session" method="POST">
+                <div class="fill ">
+                    <input class="inputText w-400 h-50" type="email" name="email" placeholder="Email ID" required>
+                    <input class="inputText w-400 h-50" type="password" name="password" placeholder="Password" required>
+                    <select name="role" id="select-user">
+                        <option value="Guest">Guest</option>
+                        <option value="Admin">Admin</option>
+                        <option value="Employee">Employee</option>
+                    </select>
+
+                </div>
+
+                <div style="margin-top: 10px ;margin-bottom: 20px; display: flex; flex-direction: row;align-items: end;  justify-content: space-between;">
+                    <div style="margin-right: 100px;">
+                        <input style=" accent-color: green; " type="checkbox" name="" id="keepSignIn">
+                        <label style=" font-family: 'rubik'; "  for="keepSignIn">Keep me Signed in</label>
+                    </div>
+                    <div>
+                        <a style="color: #288eda; font-family: 'rubik'; text-decoration: none;"
+                         href="/users/signup">Already a member?</a>
+                    </div>
+                    
+                </div>
+
+                
+                <input style="color: white; width: 270px; display: flex; align-items: center; justify-content: center; background-color: #0a7ef5; border-radius: 20px; padding: 10px;" type="submit" value="SUBSCRIBE">
+
+            </form>
+
+
+        </div>
+
+    </div>
 
 
 </body>
+
 </html>
